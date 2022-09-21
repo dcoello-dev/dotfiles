@@ -1,0 +1,52 @@
+# blerc
+bleopt complete_auto_complete=
+bleopt char_width_mode=east
+bleopt input_encoding=UTF-8
+
+# Disable syntax highlighting
+# bleopt highlight_syntax=
+
+# Disable highlighting based on filenames
+# bleopt highlight_filename=
+
+# Disable highlighting based on variable types
+# bleopt highlight_variable=
+
+# Disable auto-complete (Note: auto-complete is enabled by default in bash-4.0+)
+# bleopt complete_auto_complete=
+# Tip: you may instead specify the delay of auto-complete in millisecond
+# bleopt complete_auto_delay=300
+
+# Disable auto-complete based on the command history
+bleopt complete_auto_history=
+
+# Disable ambiguous completion
+bleopt complete_ambiguous=
+
+# Disable menu-complete by TAB
+# bleopt complete_menu_complete=
+
+# Disable menu filtering (Note: auto-complete is enabled by default in bash-4.0+)
+# bleopt complete_menu_filter=
+
+# Disable EOF marker like "[ble: EOF]"
+# bleopt prompt_eol_mark=''
+# Tip: you may instead specify another string:
+# bleopt prompt_eol_mark='⏎'
+
+# Disable error exit marker like "[ble: exit %d]"
+# bleopt exec_errexit_mark=
+# Tip: you may instead specify another string:
+# bleopt exec_errexit_mark=$'\e[91m[error %d]\e[m'
+bleopt edit_abell=1
+
+# `refresh cmd` executes clears the terminal and prints
+# the output of `cmd` in it.
+function refresh {
+  tput clear || exit 2; # Clear screen. Almost same as echo -en '\033[2J';
+  bash -ic "$@";
+}
+
+export ERROR_SINK="~/tmp/err"
+
+for f in ~/.config/blesh/.blesh_*; do source $f; done

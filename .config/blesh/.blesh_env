@@ -1,0 +1,16 @@
+ble-bind -c 'C-e s' 'bash ~/Code/Safe-CDR/resources/scripts/safe_dds.sh enter'
+ble-bind -c 'C-e b' 'bash ~/Code/Safe-CDR/resources/scripts/safe_dds.sh build'
+ble-bind -c 'C-e r' 'sudo docker run --rm -it --security-opt apparmor=unconfined --cap-add=sys_nice \
+                    --user "$UID:$GID" \
+                    --volume="/etc/group:/etc/group:ro" \
+                    -e "HOME=/home/$USER" \
+                    -e "DISPLAY=$DISPLAY" \
+                    --pid=host \
+                    --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
+                    --volume="/home/$USER:/home/$USER" \
+                    --volume="/etc/passwd:/etc/passwd:ro" \
+                    --volume="/etc/shadow:/etc/shadow:ro" \
+                    --volume=":/home/$USER/Code/ros2:/opt/" \
+                    --network host --rm myros'
+ble-bind -c 'C-e x' 'exit'
+ble-bind -c 'C-e l' 'goto -l'
