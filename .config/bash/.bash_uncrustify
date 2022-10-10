@@ -1,0 +1,52 @@
+function lint_cpp () 
+{
+    __uncrustify_all
+}
+
+# Uncrustify a list of files
+function __uncrustify ()
+{
+    for file in "$@"
+    do
+        echo "manual uncrustify ${file}"
+        uncrustify -c ~/dev/uncrustify.cfg -f "${file}" -o "${file}" --no-backup > /dev/null
+    done
+}
+
+# Uncrustify to every file .c .cpp .h .hpp in the running directory and all its subdirectories
+function __uncrustify_all ()
+{
+    local FILES=$(find -regex '.*/.*\.\(c\|cpp\|h\|hpp\)$' -not -path "./build/*")
+    __uncrustify ${FILES}
+}
+
+# Uncrustify to every file changed in git branch in this directory
+function __uncrustify_git ()
+{
+    local OUTPUT=$(git diff --name-only --relative ${1})
+    for file in ${OUTPUT}; do
+        if [[ "${file}" =~ .*.cpp || "${file}" =~ .*.hpp ]]; then
+            __uncrustify "${file}"
+        fi
+    done
+}
+
+# List the modified files between the current git branch an another one
+function modified_files ()
+{
+    local FILES=$(git diff --name-only ${1} | grep -e '\.h' -e '\.hpp' -e '\.cpp' | tr '\n' ' ')
+    for file in ${FILES}; do
+        echo "${file}"
+    done
+}
+
+# Uncrustify every modified header and soruce file between base branch and target branch
+function __uncrustify_modified ()
+{
+    local BASE_BRANCH=${1}
+    local TARGET_BRANCH=${2}
+    local FILES=$(git diff --name-only ${1} ${2} | grep -e '\.h' -e '\.hpp' -e '\.cpp' | tr '\n' ' ')
+    for file in ${FILES}; do
+        __uncrustify "${file}"
+    done
+}
