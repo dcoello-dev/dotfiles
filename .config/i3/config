@@ -198,3 +198,5 @@ bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
 bindsym $mod+Ctrl+Left resize grow width 1 px or 1 ppt
 
 bindsym $mod+d exec "dmenu_run -nf '#000000' -nb '#D00D9C' -sb '#000000' -sf '#FFFFFF'"
+
+exec_always --no-startup-id copyq

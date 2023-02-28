@@ -56,3 +56,24 @@ update_git_config
 
 # Write the following line at the bottom of .bashrc
 [[ ${BLE_VERSION-} ]] && ble-attach
+
+
+function config_screens () {
+	xrandr --output HDMI-1 --auto --right-of eDP-1
+ 	xrandr --output DP-2 --auto --right-of HDMI-1
+}
+
+function copyq_history () {
+    green=$(tput setaf 2)
+    normal=$(tput sgr0)
+
+    for n in {0..9}; do
+	echo -e -n "\n${green}${n}:${normal} "
+	copyq read "$n" | head -1 | tr -d '\n' | tr -d '\t' | cut -c 1-141
+	echo
+    done | sed '/^$/d'
+
+    read -p "Select item: " i
+
+    copyq select "$i"
+}

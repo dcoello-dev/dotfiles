@@ -1,6 +1,5 @@
 source $HOME/.config/blesh/core.sh
 
-ble-bind -c 'C-g ñ' '__exe ls'
 ble-bind -c 'C-g h' '__exe git log --oneline -n10'
 ble-bind -c 'C-g s' '__exe git status'
 ble-bind -c 'C-g a' '__exe git add --all'
