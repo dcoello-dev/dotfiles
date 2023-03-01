@@ -41,23 +41,11 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -91,17 +79,6 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# switch to workspace
-bindsym $mod+KP_End workspace 1
-bindsym $mod+KP_Down workspace 2
-bindsym $mod+KP_Next workspace 3
-bindsym $mod+KP_Left workspace 4
-bindsym $mod+KP_Begin workspace 5
-bindsym $mod+KP_Right workspace 6
-bindsym $mod+KP_Home workspace 7
-bindsym $mod+KP_Up workspace 8
-bindsym $mod+KP_Prior workspace 9
-
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -115,23 +92,14 @@ bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+KP_End move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+KP_Down move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+KP_Next move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+KP_Left move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+KP_Begin move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+KP_Right move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+KP_Home move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+KP_Up move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+KP_Prior move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
@@ -186,10 +154,10 @@ bar {
 }
 
 
-# class                 border  backgr. text    indicator child_border                                                                     
-client.focused_inactive #0d1010 #212121 #d9d9d9 #0d1010 #063340                                                                            
-client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
-client.focused          #d9d9d9 #66ff66 #000000 #d9d9d9 #ffff66 
+# class                 border  backgr. text    indicator child_border
+client.focused_inactive #0d1010 #212121 #d9d9d9 #0d1010 #063340
+client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340
+client.focused          #d9d9d9 #66ff66 #000000 #d9d9d9 #ffff66
 
 
 bindsym $mod+Ctrl+Right resize shrink width 1 px or 1 ppt
@@ -197,6 +165,21 @@ bindsym $mod+Ctrl+Up resize grow height 1 px or 1 ppt
 bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
 bindsym $mod+Ctrl+Left resize grow width 1 px or 1 ppt
 
-bindsym $mod+d exec "dmenu_run -nf '#000000' -nb '#D00D9C' -sb '#000000' -sf '#FFFFFF'"
+bindsym $mod+d exec "dmenu_run -nf '#000000' -nb '#D00D9C' -sb '#000000' c-sf '#FFFFFF'"
 
 exec_always --no-startup-id copyq
+
+bindsym $mod+u exec "python3 ~/Code/subset/subset.py -a -i 0"
+bindsym $mod+Shift+u exec "python3 ~/Code/subset/subset.py -s -i 0"
+bindsym $mod+i exec "python3 ~/Code/subset/subset.py -a -i 1"
+bindsym $mod+Shift+i exec "python3 ~/Code/subset/subset.py -s -i 1"
+bindsym $mod+o exec "python3 ~/Code/subset/subset.py -a -i 2"
+bindsym $mod+Shift+o exec "python3 ~/Code/subset/subset.py -s -i 2"
+bindsym $mod+j exec "python3 ~/Code/subset/subset.py -a -i 3"
+bindsym $mod+Shift+j exec "python3 ~/Code/subset/subset.py -s -i 3"
+bindsym $mod+k exec "python3 ~/Code/subset/subset.py -a -i 4"
+bindsym $mod+Shift+k exec "python3 ~/Code/subset/subset.py -s -i 4"
+bindsym $mod+l exec "python3 ~/Code/subset/subset.py -a -i 5"
+bindsym $mod+Shift+l exec "python3 ~/Code/subset/subset.py -s -i 5"
+
+bindsym $mod+Shift+l exec "python3 ~/Code/subset/subset.py -l | zenity --display=HDMI-1 --info"
