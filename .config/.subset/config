@@ -1,0 +1,17 @@
+{
+  "user": "dcoello",
+  "file": "/home/dcoello/.config/.subset/storage",
+  "default_domain": "clip",
+  "domains": [
+    [
+      "clip",
+      10,
+      "clip"
+    ],
+    [
+        "git",
+        5,
+        "clip"
+      ]
+  ]
+}
