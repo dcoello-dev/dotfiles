@@ -6,3 +6,7 @@ function __exe {
     tput init
     eval $str
 }
+
+function __ring {
+    ( speaker-test -t sine -f 440 >/dev/null )& pid=$! ; sleep 0.4s ; kill -9 $pid
+}

@@ -15,4 +15,4 @@ ble-bind -c 'C-e r' 'sudo docker run --rm -it --security-opt apparmor=unconfined
 ble-bind -c 'C-e x' 'exit'
 ble-bind -c 'C-e +' 'amixer -D pulse sset Master 5%+'
 ble-bind -c 'C-e -' 'amixer -D pulse sset Master 5%-'
-ble-bind -c 'C-e l' 'python3 ~/.config/.subset/subset.py -l'
+ble-bind -c 'C-e l' 'python3 ~/.config/subset/subset.py -l'

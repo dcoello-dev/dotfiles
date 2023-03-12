@@ -7,12 +7,6 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -77,3 +71,10 @@ function copyq_history () {
 
     copyq select "$i"
 }
+
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+export HISTCONTROL=ignoredups:erasedups
+
+# Guardar el historial después de cada comando
+shopt -s histappend

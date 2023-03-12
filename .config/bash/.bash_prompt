@@ -135,6 +135,8 @@ function __setprompt {
 
 	# PS4 is used for tracing a script in debug mode
 	PS4='\[${DARKGRAY}\]+\[${NOCOLOR}\] '
+
+    history -a
 }
 PROMPT_COMMAND='__setprompt'
 trap 'echo -ne "\e[0m" ' DEBUG

@@ -167,15 +167,33 @@ bindsym $mod+Ctrl+Left resize grow width 1 px or 1 ppt
 
 bindsym $mod+d exec "dmenu_run -nf '#000000' -nb '#D00D9C' -sb '#000000' -sf '#FFFFFF'"
 
-bindsym $mod+u exec "python3 ~/Code/subset/subset.py -a -i 0"
-bindsym $mod+Shift+u exec "python3 ~/Code/subset/subset.py -s -i 0"
-bindsym $mod+i exec "python3 ~/Code/subset/subset.py -a -i 1"
-bindsym $mod+Shift+i exec "python3 ~/Code/subset/subset.py -s -i 1"
-bindsym $mod+o exec "python3 ~/Code/subset/subset.py -a -i 2"
-bindsym $mod+Shift+o exec "python3 ~/Code/subset/subset.py -s -i 2"
-bindsym $mod+j exec "python3 ~/Code/subset/subset.py -a -i 3"
-bindsym $mod+Shift+j exec "python3 ~/Code/subset/subset.py -s -i 3"
-bindsym $mod+k exec "python3 ~/Code/subset/subset.py -a -i 4"
-bindsym $mod+Shift+k exec "python3 ~/Code/subset/subset.py -s -i 4"
-bindsym $mod+l exec "python3 ~/Code/subset/subset.py -a -i 5"
-bindsym $mod+Shift+l exec "python3 ~/Code/subset/subset.py -s -i 5"
+mode "buffer" {
+    bindsym Shift+0 exec "python3 ~/.config/subset/subset.py -a -i 0"
+    bindsym 0 exec "python3 ~/.config/subset/subset.py -s -i 0"
+
+    bindsym Shift+1 exec "python3 ~/.config/subset/subset.py -a -i 1"
+    bindsym 1 exec "python3 ~/.config/subset/subset.py -s -i 1"
+
+    bindsym Shift+2 exec "python3 ~/.config/subset/subset.py -a -i 2"
+    bindsym 2 exec "python3 ~/.config/subset/subset.py -s -i 2"
+
+    bindsym Shift+3 exec "python3 ~/.config/subset/subset.py -a -i 3"
+    bindsym 3 exec "python3 ~/.config/subset/subset.py -s -i 3"
+
+    bindsym Shift+4 exec "python3 ~/.config/subset/subset.py -a -i 4"
+    bindsym 4 exec "python3 ~/.config/subset/subset.py -s -i 4"
+
+    bindsym Shift+5 exec "python3 ~/.config/subset/subset.py -a -i 5"
+    bindsym 5 exec "python3 ~/.config/subset/subset.py -s -i 5"
+
+    bindsym Shift+6 exec "python3 ~/.config/subset/subset.py -a -i 6"
+    bindsym 6 exec "python3 ~/.config/subset/subset.py -s -i 6"
+
+    bindsym l exec "gnome-terminal python3 ~/.config/subset/subset.py -l"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+b mode "buffer"
+
