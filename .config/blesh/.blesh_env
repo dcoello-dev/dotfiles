@@ -1,18 +1,29 @@
 ble-bind -c 'C-e s' 'bash ~/Code/Safe-CDR/resources/scripts/safe_dds.sh enter'
 ble-bind -c 'C-e b' 'bash ~/Code/Safe-CDR/resources/scripts/safe_dds.sh build'
-ble-bind -c 'C-e r' 'sudo docker run --rm -it --security-opt apparmor=unconfined --cap-add=sys_nice \
-                    --user "$UID:$GID" \
-                    --volume="/etc/group:/etc/group:ro" \
-                    -e "HOME=/home/$USER" \
-                    -e "DISPLAY=$DISPLAY" \
-                    --pid=host \
-                    --volume="/tmp/.X11-unix:/tmp/.X11-unix" \
-                    --volume="/home/$USER:/home/$USER" \
-                    --volume="/etc/passwd:/etc/passwd:ro" \
-                    --volume="/etc/shadow:/etc/shadow:ro" \
-                    --volume=":/home/$USER/Code/ros2:/opt/" \
-                    --network host --rm myros'
 ble-bind -c 'C-e x' 'exit'
 ble-bind -c 'C-e +' 'amixer -D pulse sset Master 5%+'
 ble-bind -c 'C-e -' 'amixer -D pulse sset Master 5%-'
-ble-bind -c 'C-e l' 'python3 ~/.config/subset/subset.py -l'
+ble-bind -c 'C-e l' 'python3 ~/.config/subset/subset.py -d dev_env -l'
+
+ble-bind -c 'C-e =' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 0'
+ble-bind -c 'C-e !' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 1'
+ble-bind -c 'C-e "' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 2'
+ble-bind -c 'C-e ·' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 3'
+ble-bind -c 'C-e $' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 4'
+ble-bind -c 'C-e %' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 5'
+ble-bind -c 'C-e &' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 6'
+ble-bind -c 'C-e /' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 7'
+ble-bind -c 'C-e (' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 8'
+ble-bind -c 'C-e )' '__exe python3 ~/.config/subset/subset.py -a -d dev_env -i 9'
+
+ble-bind -c 'C-e 0' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 0'
+ble-bind -c 'C-e 1' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 1'
+ble-bind -c 'C-e 2' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 2'
+ble-bind -c 'C-e 3' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 3'
+ble-bind -c 'C-e 4' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 4'
+ble-bind -c 'C-e 5' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 5'
+ble-bind -c 'C-e 6' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 6'
+ble-bind -c 'C-e 7' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 7'
+ble-bind -c 'C-e 8' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 8'
+ble-bind -c 'C-e 9' '__exe python3 ~/.config/subset/subset.py -s -d dev_env -i 9'
+ble-bind -c 'C-e R' '__exe python3 ~/.config/subset/subset.py -d dev_env --reset'
