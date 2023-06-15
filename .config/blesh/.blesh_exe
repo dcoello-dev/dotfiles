@@ -1,7 +1,9 @@
 ble-bind -c 'C-x c' 'code .'
 ble-bind -c 'C-x h' 'htop'
 ble-bind -c 'C-x n' 'nmtui'
-ble-bind -f 'C-x s' 'insert-string "sudo wireshark 2>&1 1>/dev/null" '
+ble-bind -c 'C-x s' '__exe python3 ~/.config/subset/subset.py --keylogger --tui'
+ble-bind -c 'C-x m' '__exe spt'
+ble-bind -c 'C-x g' '__exe gitui'
 
 ble-bind -c 'C-x l' '__exe python3 ~/.config/subset/subset.py -d history -l'
 
