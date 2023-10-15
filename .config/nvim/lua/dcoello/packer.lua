@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
     use('theprimeagen/harpoon')
+    use('mg979/vim-visual-multi')
 
     -- theme
     use 'tanvirtin/monokai.nvim'
@@ -21,6 +22,10 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+    -- debugger
+    use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
+    use 'ldelossa/nvim-dap-projects'
 
     -- languaje support
 	use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -37,6 +42,19 @@ return require('packer').startup(function(use)
 			{'hrsh7th/nvim-cmp'},     -- Required
 			{'hrsh7th/cmp-nvim-lsp'}, -- Required
 			{'L3MON4D3/LuaSnip'},     -- Required
-		}
-	}
+        }
+    }
+    use {
+        'terrortylor/nvim-comment',
+    }
+    use 'APZelos/blamer.nvim'
+    use 'jamestthompson3/nvim-remote-containers'
+
+    -- markdown
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
 end)

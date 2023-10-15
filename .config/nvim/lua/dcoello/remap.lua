@@ -11,3 +11,11 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--     dapui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--     dapui.close()
+-- end
+--
+
