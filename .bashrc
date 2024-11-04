@@ -38,43 +38,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Source goto
-[[ -s "/usr/local/share/goto.sh" ]] && source /usr/local/share/goto.sh
-
 # Source all auxiliary config bash files
 for f in ~/.config/bash/.bash_*; do source $f; done
 
-export EDITOR=micro
+export EDITOR=nvim
 
-update_git_config
 
 # Write the following line at the bottom of .bashrc
 [[ ${BLE_VERSION-} ]] && ble-attach
-
-
-function config_screens () {
-	xrandr --output HDMI-1 --auto --right-of eDP-1
- 	xrandr --output DP-2 --auto --right-of HDMI-1
-}
-
-function copyq_history () {
-    green=$(tput setaf 2)
-    normal=$(tput sgr0)
-
-    for n in {0..9}; do
-	echo -e -n "\n${green}${n}:${normal} "
-	copyq read "$n" | head -1 | tr -d '\n' | tr -d '\t' | cut -c 1-141
-	echo
-    done | sed '/^$/d'
-
-    read -p "Select item: " i
-
-    copyq select "$i"
-}
-
-export HISTSIZE=1000
-export HISTFILESIZE=2000
-export HISTCONTROL=ignoredups:erasedups
-
-# Guardar el historial después de cada comando
-shopt -s histappend

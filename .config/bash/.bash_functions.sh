@@ -29,40 +29,6 @@ function enter_dev_env () {
 }
 
 
-function home_net () {
-    unset http_proxy
-    unset https_proxy  
-}
-
-function connect_cluster () {
-    case $1 in
-    default)
-        echo "no server"
-        ;;
-
-    esac
-}
-
-# Copy file with a progress bar
-function cpp() {
-	set -e
-	strace -q -ewrite cp -- "${1}" "${2}" 2>&1 \
-	| awk '{
-	count += $NF
-	if (count % 10 == 0) {
-		percent = count / total_size * 100
-		printf "%3d%% [", percent
-		for (i=0;i<=percent;i++)
-			printf "="
-			printf ">"
-			for (i=percent;i<100;i++)
-				printf " "
-				printf "]\r"
-			}
-		}
-	END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
-}
-
 function extract () {
    if [ -f $1 ] ; then
        case $1 in
@@ -88,29 +54,3 @@ function extract () {
 git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-
-function update_git_config() {
-    echo "[user]" > ~/.gitconfig
-    echo "	email = davidcoello@eprosima.com" >> ~/.gitconfig
-
-    echo "	name = David Coello Pulido" >> ~/.gitconfig
-    echo "[core]" >> ~/.gitconfig
-    echo "	editor = micro" >> ~/.gitconfig
-    echo "[alias]" >> ~/.gitconfig
-    echo "	lg = log --color --pretty=format:'%Cred%h %Cgreen(%cr) %C(bold blue)<%an> %Creset - %s %C(yellow)%d %Creset' --abbrev-commit" >> ~/.gitconfig
-    echo "[credential]" >> ~/.gitconfig
-
-    echo "	helper = \"cache\"" >> ~/.gitconfig
-}
-
-ros2d() { 
-    docker run -it --rm --net=host --cap-add=SYS_PTRACE \
-                    --security-opt seccomp=unconfined \
-                    --privileged=true \
-                    -v /dev:/dev \
-                    -v /dev/shm:/dev/shm \
-                    -e DISPLAY=$DISPLAY \
-                    -v /tmp/.X11-unix:/tmp/.X11-unix \
-                    ros:humble; 
-}
-

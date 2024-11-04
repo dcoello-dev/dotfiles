@@ -1,6 +1,5 @@
-ble-bind -c 'C-x c' 'code .'
+ble-bind -c 'C-x c' 'neovim .'
 ble-bind -c 'C-x h' 'htop'
-ble-bind -c 'C-x n' 'nmtui'
 ble-bind -c 'C-x s' '__exe python3 ~/.config/subset/subset.py --keylogger --tui'
 ble-bind -c 'C-x m' '__exe spt'
 ble-bind -c 'C-x g' '__exe gitui'

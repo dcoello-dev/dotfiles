@@ -1,0 +1,8 @@
+[user]
+    name = dcoello-dev
+    email = dcpulido91@gmail.com
+    username = dcoello-dev
+[core]
+    editor = nvim
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    pager = delta
