@@ -43,6 +43,9 @@ for f in ~/.config/bash/.bash_*; do source $f; done
 
 export EDITOR=nvim
 
-
 # Write the following line at the bottom of .bashrc
 [[ ${BLE_VERSION-} ]] && ble-attach
+
+export SANDBOX_IDEAS="/home/dcoello/doc/codebase/"
+export SANDBOX_EDITOR="nvim"
+export SANDBOX_CONF="/home/dcoello/doc/codebase/environments.toml"
