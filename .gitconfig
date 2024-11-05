@@ -1,0 +1,9 @@
+[user]
+    email = dcpulido91@gmail.com
+    name = dcoello-dev
+[core]
+    editor = nvim
+[alias]
+    lg = log --color --pretty=format:'%Cred%h %Cgreen(%cr) %C(bold blue)<%an> %Creset - %s %C(yellow)%d %Creset' --abbrev-commit
+[credential]
+    helper = "cache"
