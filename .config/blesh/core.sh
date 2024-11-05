@@ -3,7 +3,6 @@ function __exe {
     local CYAN="$(tput setaf 6)"
     str="$*"
     echo -e "\e[1A\e[K"${CYAN}"(auto)➜"${GREEN} $str
-    tput init
     eval $str
 }
 
