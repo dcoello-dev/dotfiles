@@ -29,6 +29,7 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 function __setprompt {
+    history -n
     local LAST_COMMAND=$? # Must come first!
     # Define colors
     local BOLD='$(tput bold)'

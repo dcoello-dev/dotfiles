@@ -49,3 +49,7 @@ export EDITOR=nvim
 export SANDBOX_IDEAS="/home/dcoello/doc/codebase/"
 export SANDBOX_EDITOR="nvim"
 export SANDBOX_CONF="/home/dcoello/doc/codebase/environments.toml"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
