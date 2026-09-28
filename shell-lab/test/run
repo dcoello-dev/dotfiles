@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Run every check against the lab, in a real pty.
+#
+# These live here and not in /tmp because /tmp is wiped when WSL boots and this
+# harness is the only thing that catches the regressions. Every one of the bugs
+# documented in ../README.md was found or confirmed by one of these.
+#
+#   ./run            everything
+#   ./run regression just one file
+set -u
+cd "$(dirname "${BASH_SOURCE[0]}")"
+VAR="$(cd .. && pwd)/var"
+only=${1:-}
+fail=0
+for f in regression multiline timer autostart nested-editor nvim-mode nvim-modal nvim-keys nvim-lines nvim-modetag nvim-chords unified-esc mode-switch; do
+    [ -n "$only" ] && [ "$only" != "$f" ] && continue
+    [ -r "$f.py" ] || continue
+    printf '\033[38;5;66m── %s\033[0m\n' "$f"
+    rm -f "$VAR/history.tsv" "$VAR/history.db"
+    if ! timeout 300 python3 "$f.py" 2>&1 | sed 's/^/   /'; then
+        fail=1
+    fi
+done
+rm -f "$VAR/history.tsv" "$VAR/history.db"
+exit $fail

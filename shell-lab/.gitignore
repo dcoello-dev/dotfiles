@@ -1,0 +1,8 @@
+# Your command history with its metadata. Personal data, and it is state, not code.
+var/
+
+# The Python environment: 21 MB of third-party packages against 296 KB of code, and one
+# command in the README rebuilds it.
+editor/venv/
+__pycache__/
+*.pyc

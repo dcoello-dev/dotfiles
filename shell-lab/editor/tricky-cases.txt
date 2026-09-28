@@ -1,0 +1,12 @@
+echo "nested quote: 'inside' end"
+echo 'literal with $HOME unexpanded'
+git log --format="%h $(date +%F)" | head
+if [[ -n "$x" ]]; then echo yes; fi
+for f in *.sh; do nosuch-cmd "$f"; done
+echo "${VAR:-default}" && echo end
+cat <<'END'
+heredoc text with nosuch-cmd inside
+END
+echo $((2 + 3 * 4)) result
+declare -A map=([key]="value")
+echo "escaped \" inside" and outside

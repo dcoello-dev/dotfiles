@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Start the lab: an interactive shell without ble.sh, carrying the pieces in
+# ~/shell-lab/parts. Touches nothing in your config; `exit` puts you back.
+#
+#   ./lab                      everything on
+#   LAB_TIMING=0 ./lab         switch one piece off
+#   ./lab -c 'command'         run something inside the lab and leave
+set -u
+LAB_HOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export LAB_HOME
+export PATH="$LAB_HOME/bin:$PATH"
+exec bash --rcfile "$LAB_HOME/lab.bash" -i "$@"
